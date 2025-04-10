@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file.   
 
 ## **v1.1.0 (31st of March 2025)** - *Feature Enhancements*
 
