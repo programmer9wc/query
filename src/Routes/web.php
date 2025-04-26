@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Webbycrown\QueryBuilder\Http\Controllers\QueryBuilderController;
+use Webbycrown\QueryBuilder\Http\Controllers\AuditLogController;
+use Webbycrown\QueryBuilder\Http\Controllers\GenerateScheduledReportsConroller;
 
 
 $prefix = config('querybuilder.access_route', 'queries'); // Default to 'queries'
@@ -88,6 +90,25 @@ Route::middleware($middleware)->group(function () use ($prefix) {
          * Delete a specific saved query.
          */
         Route::post('/delete', 'delete')->name('api.queries.delete');
+
+    });
+
+
+    Route::controller(AuditLogController::class)->prefix($prefix.'/log')->group(function () {
+
+        /**
+         * Display the list of saved queries.
+         */
+        Route::get('/', 'index')->name('queries.log.index');
+
+    });
+
+    Route::controller(GenerateScheduledReportsConroller::class)->prefix($prefix.'/reports')->group(function () {
+
+       
+        Route::get('/', 'index')->name('queries.reports.index');
+
+        Route::post('/save', 'storeScheduledReport')->name('api.reports.save');
 
     });
 

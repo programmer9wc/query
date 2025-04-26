@@ -39,6 +39,13 @@ class QueryBuilderServiceProvider extends ServiceProvider
         // Include a helpers file containing custom utility functions.
         require_once __DIR__ . '/../Helpers/helpers.php';
 
+        $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'querybuilder');
+
+        $this->publishes([
+            __DIR__.'/../Resources/lang' => resource_path('lang/vendor/querybuilder'),
+        ], 'translations');
+
+
     }
     
     /**
