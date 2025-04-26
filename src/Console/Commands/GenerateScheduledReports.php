@@ -31,7 +31,8 @@ class GenerateScheduledReports extends Command
      * Constructor to establish database connection.
      */
     public function __construct()
-    {
+    {    
+        parent::__construct();
         $this->conn_key = connect_to_main_db();
     }
 
